@@ -1,0 +1,41 @@
+﻿<Window x:Class="webcrawler.AdvancedSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:webcrawler"
+        mc:Ignorable="d"
+        Title="Advanced Settings" Height="300" Width="200"
+        Background="#1F1F1F"
+        Closing="Settings_Closing">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="42*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Max Depth-&gt;" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Foreground="White" Width="80" Grid.ColumnSpan="2"/>
+        <Label Content="Max Urls-&gt;" HorizontalAlignment="Left" Margin="2,29,0,0" VerticalAlignment="Top" Width="80" Foreground="White" Grid.ColumnSpan="2"/>
+        <Label Content="Delay-&gt;" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Max Retry-&gt;" HorizontalAlignment="Left" Margin="2,81,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="35" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
+        <TextBox HorizontalAlignment="Left" Margin="7,29,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="35" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
+        <TextBox HorizontalAlignment="Left" Margin="55,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="28" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Height="26" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.213"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left" Margin="2,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="28" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Grid.Column="1" Height="26"/>
+        <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="5,122,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\default_settings.png" Width="20" Height="20"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Window>
