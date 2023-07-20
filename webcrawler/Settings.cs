@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: webcrawler
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +8,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using System.IO;
+using System.Diagnostics;
 using Newtonsoft.Json;
 
 namespace webcrawler.settings
 {
     class Settings
     {
-        private static readonly string settings_path = "C:\\Users\\Ulas Tan\\source\\repos\\webcrawler\\webcrawler\\settings\\settings.json";
+        private static readonly string settings_path = AppDomain.CurrentDomain.BaseDirectory + "settings.json";
         private static readonly int default_max_depth = 3;
         private static readonly int default_max_url = 100;
         private static readonly int default_delay = 1000;
@@ -25,13 +28,6 @@ namespace webcrawler.settings
         {
             set_defaults();
         }
-        public void set_defaults()
-        {
-            this.max_depth = default_max_depth;
-            this.max_url = default_max_url;
-            this.delay = default_delay;
-            this.max_retry = default_max_retry;
-        }
         public Settings(int max_depth, int max_url, int delay, int max_retry)
         {
             this.max_depth = max_depth;
@@ -39,6 +35,14 @@ namespace webcrawler.settings
             this.delay = delay;
             this.max_retry = max_retry;
         }
+        public void set_defaults()
+        {
+            this.max_depth = default_max_depth;
+            this.max_url = default_max_url;
+            this.delay = default_delay;
+            this.max_retry = default_max_retry;
+        }
+
         public void save_settings()
         {
             string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);

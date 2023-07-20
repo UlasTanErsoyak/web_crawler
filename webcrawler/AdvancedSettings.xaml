@@ -42,12 +42,12 @@
         </TextBox>
         <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="87,4,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click" Grid.Column="1" Height="26" Width="28">
             <StackPanel Orientation="Horizontal">
-                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\home_settings.PNG" Width="25" Height="25"/>
+                <Image Source="pack://application:,,,/src_img/home_settings.PNG" Width="25" Height="25"/>
             </StackPanel>
         </Button>
         <Button x:Name="save_settings_button" HorizontalAlignment="Left" Margin="6,119,0,0" VerticalAlignment="Top" Click="save_settings_button_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\save_icon.PNG" Width="20" Height="20"/>
+                <Image Source="pack://application:,,,/src_img/save_icon.PNG" Width="20" Height="20"/>
             </StackPanel>
         </Button>
 

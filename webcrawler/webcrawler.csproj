@@ -8,13 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src_img\home_settings.PNG" />
+    <None Remove="src_img\save_icon.PNG" />
+    <None Remove="src_img\settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="src_img\settings.png">
+    <Resource Include="src_img\home_settings.PNG" />
+    <Resource Include="src_img\save_icon.PNG" />
+    <Resource Include="src_img\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Resource>
   </ItemGroup>
 
 </Project>

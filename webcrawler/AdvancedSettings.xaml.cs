@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: webcrawler
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Printing;
@@ -45,7 +47,6 @@ namespace webcrawler
                 
             }
         }
-
         private void back_to_default_settings_button_Click(object sender, RoutedEventArgs e)
         {
             current_settings.set_defaults();
@@ -53,7 +54,6 @@ namespace webcrawler
             visualize_settings();
             MessageBox.Show("Reverted to default settings.", "Saved", MessageBoxButton.OK);
         }
-
         private void save_settings_button_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(max_depth_textbox.Text, out int max_depth) &&
@@ -72,7 +72,6 @@ namespace webcrawler
                 {
                     MessageBox.Show("Invalid input. Please enter positive integer values in the textboxes.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
             }
             else
             {

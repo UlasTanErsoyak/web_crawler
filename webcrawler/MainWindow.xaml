@@ -43,9 +43,10 @@
         </GroupBox>
 
         <Button x:Name="advancedsettings_button" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Click="advancedsettings_button_Click">
-            <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\settings.png" Width="20" Height="20"/>
+            <Image Source="pack://application:,,,/src_img/settings.png" Width="20" Height="20"/>
         </Button>
-
         <TextBlock x:Name="chronometer_textblock" HorizontalAlignment="Left" Margin="28,3,0,0" VerticalAlignment="Top" FontSize="10" Foreground="White" Width="84"/>
+        <Button x:Name="crawl_button" Content="crawl" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Height="23" Width="48" Click="crawl_button_Click"/>
+        <ListBox x:Name="crawled_url_listbox" Margin="274,10,110,90"/>
     </Grid>
 </Window>
