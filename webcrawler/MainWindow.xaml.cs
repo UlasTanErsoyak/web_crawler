@@ -36,7 +36,7 @@ namespace webcrawler
         private void advancedsettings_button_Click(object sender, RoutedEventArgs e)
         {
             AdvancedSettings settings_window;
-            settings_window = new AdvancedSettings(settings_path);
+            settings_window = new AdvancedSettings();
             settings_window.Visibility = Visibility.Hidden;
             settings_window.Visibility=Visibility.Visible;
         }

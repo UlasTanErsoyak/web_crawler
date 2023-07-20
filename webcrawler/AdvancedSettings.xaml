@@ -16,11 +16,11 @@
         </Grid.ColumnDefinitions>
         <Label Content="Max Depth-&gt;" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Foreground="White" Width="80" Grid.ColumnSpan="2"/>
         <Label Content="Max Urls-&gt;" HorizontalAlignment="Left" Margin="2,29,0,0" VerticalAlignment="Top" Width="80" Foreground="White" Grid.ColumnSpan="2"/>
-        <Label Content="Delay-&gt;" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Delay (ms)-&gt;" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2" Width="80"/>
         <Label Content="Max Retry-&gt;" HorizontalAlignment="Left" Margin="2,81,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="35" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="7,29,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="35" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="55,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="28" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Height="26" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+        <TextBox x:Name="max_depth_textbox" HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
+        <TextBox x:Name="max_urls_textbox" HorizontalAlignment="Left" Margin="7,29,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
+        <TextBox x:Name="delay_textbox" HorizontalAlignment="Left" Margin="7,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Height="26" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,12 +30,27 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox HorizontalAlignment="Left" Margin="2,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="28" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Grid.Column="1" Height="26"/>
-        <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="5,122,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click">
+        <TextBox x:Name="max_retry_textbox" HorizontalAlignment="Left" Margin="7,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Grid.Column="1" Height="26" RenderTransformOrigin="0.823,0.559">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.205"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="87,4,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click" Grid.Column="1" Height="26" Width="28">
             <StackPanel Orientation="Horizontal">
-                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\default_settings.png" Width="20" Height="20"/>
+                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\home_settings.PNG" Width="25" Height="25"/>
             </StackPanel>
         </Button>
+        <Button x:Name="save_settings_button" HorizontalAlignment="Left" Margin="6,119,0,0" VerticalAlignment="Top" Click="save_settings_button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\src_img\save_icon.PNG" Width="20" Height="20"/>
+            </StackPanel>
+        </Button>
+
 
     </Grid>
 </Window>

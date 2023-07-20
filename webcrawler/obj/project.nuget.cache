@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6JzQ32FmFUK47Is0aSUIIcYe4QXoN0P0D0xwOdb1CIAM3pDmxFqO4puj8Yqu5ugO4o3Ecmkm0QonJfYnTGATfg==",
+  "dgSpecHash": "7NmtJFT9fp8ge+t97/hkyrlQ8StOsfvvIH8B687yM2sfwdY7kwAcBGJgfYf2cVBs0ez2XfvF3mZxE0aUqfE74g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ulas Tan\\source\\repos\\webcrawler\\webcrawler\\webcrawler.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Ulas Tan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
