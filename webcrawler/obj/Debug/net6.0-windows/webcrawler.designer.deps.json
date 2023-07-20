@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
+      "HtmlAgilityPack/1.11.50": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.50.0",
+            "fileVersion": "1.11.50.0"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -17,6 +25,13 @@
     }
   },
   "libraries": {
+    "HtmlAgilityPack/1.11.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lxxkDIykfX2HgMZZdmU8gT4vWQvOUjkCsCXmSRaAGuAofyzUjIjJFJHWeBXk+dJ9af0qXJyJ/Td7dBbWQpgM3Q==",
+      "path": "htmlagilitypack/1.11.50",
+      "hashPath": "htmlagilitypack.1.11.50.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,

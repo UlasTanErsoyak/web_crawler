@@ -101,7 +101,7 @@ namespace webcrawler {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/webcrawler;V1.0.0.0;component/advancedsettings.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/webcrawler;component/advancedsettings.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AdvancedSettings.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

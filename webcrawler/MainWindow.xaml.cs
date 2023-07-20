@@ -1,9 +1,10 @@
 ﻿// Ignore Spelling: img webcrawler
 
-using System;
-using System.Windows.Threading;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
-
+using webcrawler.spider_factory;
+using webcrawler.Url;
 namespace webcrawler
 {
     public partial class MainWindow : Window
@@ -24,9 +25,11 @@ namespace webcrawler
             settings_window.Visibility = Visibility.Hidden;
             settings_window.Visibility=Visibility.Visible;
         }
-        private void crawl_button_Click(object sender, RoutedEventArgs e)
+        private async void  crawl_button_Click(object sender, RoutedEventArgs e)
         {
-            //todo
+            HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync(rooturl_textbox.Text);
+
         }
     }
 }
