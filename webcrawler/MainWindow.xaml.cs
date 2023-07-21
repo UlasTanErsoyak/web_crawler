@@ -1,4 +1,5 @@
 ﻿// Ignore Spelling: img webcrawler
+using System.Threading.Tasks;
 using System.Windows;
 namespace webcrawler
 {
@@ -20,11 +21,15 @@ namespace webcrawler
             settings_window.Visibility = Visibility.Hidden;
             settings_window.Visibility=Visibility.Visible;
         }
-        private void crawl_button_Click(object sender, RoutedEventArgs e)
+        private async void crawl_button_Click(object sender, RoutedEventArgs e)
         {
             if (vertical_crawl_radio.IsChecked == true)
             {
-                URL root_url = new URL(0, 0, 0, rooturl_textbox.Text);
+                URLQueue urlQueue = new URLQueue();
+                URL root_url = new URL(0,0,0,rooturl_textbox.Text);
+                urlQueue.Add(root_url);
+                Spider spider = new Spider();
+                var x = await Task.Run(() => spider.Crawl(urlQueue,this));
             }
             else if (horizontal_crawl_radio.IsChecked == true)
             {

@@ -1,4 +1,5 @@
 ﻿// Ignore Spelling: webcrawler
+//9.5 out of 10
 using System;
 using System.IO;
 using Newtonsoft.Json;
@@ -23,10 +24,11 @@ namespace WebCrawler.Settings
         }
         public WebCrawlerSettings(int maxDepth, int maxUrl, int delay, int maxRetry)
         {
-            MaxDepth = maxDepth;
-            MaxUrl = maxUrl;
-            Delay = delay;
-            MaxRetry = maxRetry;
+            MaxDepth = maxDepth > 0 ? maxDepth : DefaultMaxDepth;
+            MaxUrl = maxUrl > 0 ? maxUrl : DefaultMaxUrl;
+            Delay = delay > 0 ? delay : DefaultDelay;
+            MaxRetry = maxRetry > 0 ? maxRetry : DefaultMaxRetry;
+            ValidateSettings();
         }
         public void SetDefaults()
         {
@@ -34,6 +36,7 @@ namespace WebCrawler.Settings
             MaxUrl = DefaultMaxUrl;
             Delay = DefaultDelay;
             MaxRetry = DefaultMaxRetry;
+            ValidateSettings();
         }
         public void SaveSettings()
         {
@@ -76,6 +79,29 @@ namespace WebCrawler.Settings
             else
             {
                 SetDefaults();
+            }
+        }
+        private void ValidateSettings()
+        {
+            if (MaxDepth <= 0)
+            {
+                MaxDepth = DefaultMaxDepth;
+                logger.Warning("MaxDepth cannot be 0 or negative. Using default value.");
+            }
+            if (MaxUrl <= 0)
+            {
+                MaxUrl = DefaultMaxUrl;
+                logger.Warning("MaxUrl cannot be 0 or negative. Using default value.");
+            }
+            if (Delay <= 0)
+            {
+                Delay = DefaultDelay;
+                logger.Warning("Delay cannot be 0 or negative. Using default value.");
+            }
+            if (MaxRetry <= 0)
+            {
+                MaxRetry = DefaultMaxRetry;
+                logger.Warning("MaxRetry cannot be 0 or negative. Using default value.");
             }
         }
     }

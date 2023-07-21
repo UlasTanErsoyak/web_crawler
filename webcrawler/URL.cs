@@ -1,7 +1,7 @@
 ﻿// Ignore Spelling: webcrawler
+//9 out of 10
 using System;
 using System.Collections.Generic;
-
 namespace webcrawler
 {
     internal class URL
