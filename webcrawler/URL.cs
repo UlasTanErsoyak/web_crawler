@@ -1,61 +1,39 @@
 ﻿// Ignore Spelling: webcrawler
-
 using System;
-namespace webcrawler.Url
-{
-    public class URL
-    {
-        public URL(int id,int depth,int spider_id,int parent_id,int status_code,
-            int byte_length,int child_count,string content, string? url_address)
-        {
-            this.id = id;
-            this.depth = depth;
-            this.spider_id = spider_id;
-            this.parent_id = parent_id;
-            this.status_code = status_code;
-            this.byte_length = byte_length;
-            this.child_count = child_count;
-            this.content = content;
-            this.url_address = url_address;
+using System.Collections.Generic;
 
-        }
-        public int id { get; set; }
-        public int depth { get; set; }
-        public int spider_id { get; set; }
-        public string? url_address { get; set; }
-        public int parent_id { get; set; }
-        public int status_code { get; set; }
-        public int byte_length { get; set; }
-        public int child_count { get; set; }
-        public string content { get; set; }
-        public  bool is_valid()
+namespace webcrawler
+{
+    internal class URL
+    {
+        private static int nextID = 0;
+        public URL(int parentID, uint depth, int spiderID, string urlAddress)
         {
-            try
-            {
-                return Uri.TryCreate(this.url_address, UriKind.Absolute, out Uri resultUri)
-                    && (resultUri.Scheme == Uri.UriSchemeHttp || resultUri.Scheme == Uri.UriSchemeHttps);
-            }
-            catch (UriFormatException)
-            {
-                return false;
-            }
+            this.URLID = nextID++;
+            this.ParentID = parentID;
+            this.Depth = depth;
+            this.SpiderID = spiderID;
+            this.URLAddress = urlAddress;
+            this.FoundingDate = DateTime.Now;
+            IsFailed = false;
         }
-        public override string ToString()
+        public int URLID { get; set; }
+        public int ParentID { get; set; }
+        public uint Depth { get; set; }
+        public int SpiderID { get; set; }
+        public int CreatedURLCount { get; set; }
+        public string URLAddress { get; set; }
+        public DateTime FoundingDate { get; set; }
+        public DateTime CrawlingDate { get; set; }
+        public bool IsFailed { get; set; }
+        public void Failed()
         {
-            return $"url id: {id}, depth: {depth}, spider id: {spider_id}, url: {url_address}," +
-                   $" parent id: {parent_id}";
+            this.IsFailed = true;
         }
-        public override bool Equals(object obj)
+        public bool IsValid()
         {
-            if (obj is URL otherUrl)
-            {
-                return this.id == otherUrl.id;
-            }
-            return false;
-        }
-        public override int GetHashCode()
-        {
-            return this.id.GetHashCode();
+            return Uri.TryCreate(this.URLAddress, UriKind.Absolute, out Uri result) &&
+                   (result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps);
         }
     }
 }

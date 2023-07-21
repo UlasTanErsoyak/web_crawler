@@ -1,6 +1,6 @@
 {
-  "max_depth": 3,
-  "max_url": 100,
-  "delay": 1000,
-  "max_retry": 3
+  "MaxDepth": 3,
+  "MaxUrl": 100,
+  "Delay": 1000,
+  "MaxRetry": 3
 }

@@ -1,43 +1,21 @@
-﻿using System;
+﻿// Ignore Spelling: webcrawler
 using System.Collections.Generic;
-using webcrawler.settings;
-namespace webcrawler.queue
+namespace webcrawler
 {
-    class URLQueue
+    internal class URLQueue : IURLCollection
     {
-        private Settings current_settings;
-        private Queue<string> url_queue = new Queue<string>();
-        private int total_crawled_urls= 0;
-        private int desired_urls;
-        public URLQueue()
-        { 
-            current_settings = new Settings();
-            current_settings.load_settings();
-            this.desired_urls = current_settings.max_url;
-        }
-        public bool EnqueueUrl(string url)
+        private static Queue<URL> urlQueue = new Queue<URL>();
+        public void Add(URL url)
         {
-            lock (url_queue)
-            {
-                if (total_crawled_urls < desired_urls)
-                {
-                    url_queue.Enqueue(url);
-                    return true;
-                }
-                return false;
-            }
+            urlQueue.Enqueue(url);
         }
-        public string DequeueUrl()
+        public bool IsEmpty()
         {
-            lock (url_queue)
-            {
-                if (url_queue.Count > 0)
-                {
-                    total_crawled_urls++;
-                    return url_queue.Dequeue();
-                }
-                return null;
-            }
+            return urlQueue.Count==0;
+        }
+        public URL Pop()
+        {
+            return urlQueue.Count==0 ? null : urlQueue.Dequeue();
         }
     }
 }

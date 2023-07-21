@@ -11,7 +11,7 @@
     <Grid>
         <TextBox x:Name="rooturl_textbox" HorizontalAlignment="Left" Margin="80,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="25" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
         <Label Content="Root URL->" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Height="25" Width="72" Foreground="White"/>
-        <Slider x:Name="spider_slider" HorizontalAlignment="Left" Margin="99,63,0,0" VerticalAlignment="Top" Width="120" Foreground="#BB2222" Minimum="0" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider_ValueChanged"/>
+        <Slider x:Name="spider_slider" HorizontalAlignment="Left" Margin="99,63,0,0" VerticalAlignment="Top" Width="120" Foreground="#BB2222" Minimum="0" Maximum="9" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider_ValueChanged"/>
         <Label Content="Spider Count->" HorizontalAlignment="Left" Margin="9,59,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="spidercount_label" HorizontalAlignment="Left" Margin="220,59,0,0" VerticalAlignment="Top" Width="30" Foreground="White">
             <Label.Content>
