@@ -26,14 +26,16 @@ namespace webcrawler
         public DateTime FoundingDate { get; set; }
         public DateTime CrawlingDate { get; set; }
         public bool IsFailed { get; set; }
-        public void Failed()
-        {
-            this.IsFailed = true;
-        }
         public bool IsValid()
         {
             return Uri.TryCreate(this.URLAddress, UriKind.Absolute, out Uri result) &&
                    (result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps);
+        }
+        public override string ToString()
+        {
+            return $"URLID: {URLID}, ParentID: {ParentID}, Depth: {Depth}, SpiderID: {SpiderID}, " +
+                   $"CreatedURLCount: {CreatedURLCount}, URLAddress: {URLAddress}, " +
+                   $"FoundingDate: {FoundingDate}, CrawlingDate: {CrawlingDate}, IsFailed: {IsFailed}";
         }
     }
 }

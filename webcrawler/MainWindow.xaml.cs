@@ -1,11 +1,13 @@
 ﻿// Ignore Spelling: img webcrawler
 using System.Threading.Tasks;
 using System.Windows;
+//todo real time url per second
 namespace webcrawler
 {
     public partial class MainWindow : Window
     {
         public readonly string settings_img_path = "src_img/settings.png";
+        public readonly string crawl_img_path = "src_img/crawl_image.png";
         public MainWindow()
         {
             InitializeComponent();
@@ -23,17 +25,22 @@ namespace webcrawler
         }
         private async void crawl_button_Click(object sender, RoutedEventArgs e)
         {
+            crawled_url_listbox.Items.Clear();
             if (vertical_crawl_radio.IsChecked == true)
             {
                 URLQueue urlQueue = new URLQueue();
                 URL root_url = new URL(0,0,0,rooturl_textbox.Text);
                 urlQueue.Add(root_url);
-                Spider spider = new Spider();
-                var x = await Task.Run(() => spider.Crawl(urlQueue,this));
+                Spider spider = new Spider(1);
+                var x = await Task.Run(() => spider.Crawl(this,urlQueue));
             }
             else if (horizontal_crawl_radio.IsChecked == true)
             {
-                //todo
+                URLStack urlStack = new URLStack();
+                URL root_url = new URL(0, 0, 0, rooturl_textbox.Text);
+                urlStack.Add(root_url);
+                Spider spider = new Spider(1);
+                var x = await Task.Run(() => spider.Crawl(this, urlStack));
             }
             else
             {

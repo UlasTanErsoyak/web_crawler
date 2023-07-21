@@ -9,48 +9,43 @@
         Background="#1F1F1F"
         Closing="Settings_Closing">
 
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2C2C2C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="26"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="42*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Max Depth-&gt;" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Foreground="White" Width="80" Grid.ColumnSpan="2"/>
-        <Label Content="Max Urls-&gt;" HorizontalAlignment="Left" Margin="2,29,0,0" VerticalAlignment="Top" Width="80" Foreground="White" Grid.ColumnSpan="2"/>
-        <Label Content="Delay (ms)-&gt;" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2" Width="80"/>
-        <Label Content="Max Retry-&gt;" HorizontalAlignment="Left" Margin="2,81,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Grid.ColumnSpan="2"/>
+        <Label Content="Max Depth->" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Foreground="White" Width="80" Grid.ColumnSpan="2"/>
+        <Label Content="Max Urls->" HorizontalAlignment="Left" Margin="2,29,0,0" VerticalAlignment="Top" Width="80" Foreground="White" Grid.ColumnSpan="2"/>
+        <Label Content="Delay (ms)->" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2" Width="80"/>
+        <Label Content="Max Retry->" HorizontalAlignment="Left" Margin="2,81,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Grid.ColumnSpan="2"/>
         <TextBox x:Name="max_depth_textbox" HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
         <TextBox x:Name="max_urls_textbox" HorizontalAlignment="Left" Margin="7,29,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Height="26" Grid.Column="1" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White"/>
-        <TextBox x:Name="delay_textbox" HorizontalAlignment="Left" Margin="7,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Height="26" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.213"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <TextBox x:Name="max_retry_textbox" HorizontalAlignment="Left" Margin="7,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Grid.Column="1" Height="26" RenderTransformOrigin="0.823,0.559">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.205"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="87,4,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click" Grid.Column="1" Height="26" Width="28">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="pack://application:,,,/src_img/home_settings.PNG" Width="25" Height="25"/>
-            </StackPanel>
+        <TextBox x:Name="delay_textbox" HorizontalAlignment="Left" Margin="7,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Height="26" Grid.Column="1"/>
+        <TextBox x:Name="max_retry_textbox" HorizontalAlignment="Left" Margin="7,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" Grid.Column="1" Height="26"/>
+        <Button x:Name="back_to_default_settings_button" HorizontalAlignment="Left" Margin="82,3,0,0" VerticalAlignment="Top" Click="back_to_default_settings_button_Click" Grid.Column="1" Style="{StaticResource ButtonStyle}" Height="31" Width="33">
+            <Image Source="pack://application:,,,/src_img/home_settings.PNG" Width="30" Height="30"/>
         </Button>
-        <Button x:Name="save_settings_button" HorizontalAlignment="Left" Margin="6,119,0,0" VerticalAlignment="Top" Click="save_settings_button_Click">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="pack://application:,,,/src_img/save_icon.PNG" Width="20" Height="20"/>
-            </StackPanel>
+        <Button x:Name="save_settings_button" HorizontalAlignment="Left" Margin="6,119,0,0" VerticalAlignment="Top" Click="save_settings_button_Click" Style="{StaticResource ButtonStyle}" Height="32" Width="34">
+            <Image Source="pack://application:,,,/src_img/save_icon.PNG" Width="30" Height="30"/>
         </Button>
-
-
     </Grid>
 </Window>

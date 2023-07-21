@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src_img\crawl_image.png" />
     <None Remove="src_img\home_settings.PNG" />
     <None Remove="src_img\save_icon.PNG" />
     <None Remove="src_img\settings.png" />
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="src_img\crawl_image.png" />
     <Resource Include="src_img\home_settings.PNG" />
     <Resource Include="src_img\save_icon.PNG" />
     <Resource Include="src_img\settings.png">

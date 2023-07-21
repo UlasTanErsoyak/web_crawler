@@ -1,53 +1,89 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Documents;
-
+using webcrawler.Logs;
+//implement settings as end condition
+//implement vertical and horizontal traversal
+//methodize everything
+//clean up the code
+//database integration
 namespace webcrawler
 {
     internal class Spider
     {
-        private static List<URL> urls = new List<URL>();
         private static HashSet<string> crawledUrls = new HashSet<string>();
         private readonly HttpClient httpClient= new HttpClient();
-        public async Task<string> Crawl(URLQueue queue,MainWindow mainWindow)
+        Logger logger = new Logger();
+        private readonly int numberOfThreads;
+        public Spider(int numberOfThreads)
         {
-            while (!queue.IsEmpty())
+            this.numberOfThreads = numberOfThreads;
+        }
+        public async Task<bool> Crawl(MainWindow mainWindow,IURLCollection urlCollection)
+        {
+            while (!urlCollection.IsEmpty())
             {
-                URL url = queue.Pop();
+                URL url = urlCollection.Pop();
                 if (!crawledUrls.Contains(url.URLAddress))
                 {
-                    var html = await httpClient.GetStringAsync(url.URLAddress);
-                    var doc = new HtmlDocument();
-                    doc.LoadHtml(html);
-                    var anchorTags = doc.DocumentNode.SelectNodes("//a[@href]")
-                        .Where(node => !node.Descendants("img").Any()) // Filter out anchor tags containing images
-                        .Select(node => node.GetAttributeValue("href", ""))
-                        .Where(href => Uri.TryCreate(href, UriKind.Absolute, out Uri uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
-                        .ToArray();
-                    mainWindow.Dispatcher.Invoke(() =>
+                    try
                     {
-                        mainWindow.crawled_url_listbox.Items.Add(url.URLAddress);
-                    });
-                    crawledUrls.Add(url.URLAddress);
-                    foreach (var node in anchorTags)
+                        if (url.IsValid())
+                        {
+                            IEnumerable<string> foundUrls = await GetUrlsAsync(url);
+                            url.CreatedURLCount = foundUrls.Count();
+                            url.CrawlingDate = DateTime.Now;
+                            mainWindow.Dispatcher.Invoke(() =>
+                            {
+                                mainWindow.crawled_url_listbox.Items.Add(url.ToString());
+                            });
+                            crawledUrls.Add(url.URLAddress);
+                            foreach (var node in foundUrls)
+                            {
+                                URL newURL = new URL(url.ParentID, url.Depth + 1, Thread.CurrentThread.ManagedThreadId, node);
+                                urlCollection.Add(newURL);
+                            }
+                        }
+                        else
+                        {
+                            logger.Warning($"{url.URLAddress} was not valid.");
+                        }
+                    }
+                    catch (Exception ex)
                     {
-                        URL newurl = new URL(url.ParentID, 0, Thread.CurrentThread.ManagedThreadId, node);
-                        urls.Add(newurl);
-                        queue.Add(newurl);
+                        logger.Error(ex);
+                        url.IsFailed = true;
                     }
                 }
-                
             }
-            return "x";
+            return true;
+        }
+        private async Task<IEnumerable<string>> GetUrlsAsync(URL url)
+        {
+            try
+            {
+                var html = await httpClient.GetStringAsync(url.URLAddress);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(html);
+                var anchorTags = doc.DocumentNode.SelectNodes("//a[@href]")
+                    .Where(node => !node.Descendants("img").Any())
+                    .Select(node => node.GetAttributeValue("href", ""))
+                    .Where(href => Uri.TryCreate(href, UriKind.Absolute, out Uri uriResult)
+                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)).ToArray();
+                return anchorTags;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                url.IsFailed = true;
+                return Enumerable.Empty<string>();
+            }
         }
     }
-
 }
 

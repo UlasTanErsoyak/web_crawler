@@ -1,6 +1,6 @@
 {
   "MaxDepth": 3,
-  "MaxUrl": 1000,
+  "MaxUrl": 100,
   "Delay": 1000,
   "MaxRetry": 3
 }
