@@ -77,9 +77,19 @@
 
         <Button x:Name="advancedsettings_button" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Click="advancedsettings_button_Click" Style="{StaticResource ButtonStyle}" Height="32" Width="32">
             <Image Source="pack://application:,,,/src_img/settings.png" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Open advanced settings page for crawling end conditions.
+                </ToolTip>
+            </Button.ToolTip>
         </Button>
         <Button x:Name="crawl_button" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Click="crawl_button_Click" Style="{StaticResource ButtonStyle}" Height="32" Width="32">
             <Image Source="pack://application:,,,/src_img/crawl_image.png" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Start crawling the given url with current settings.
+                </ToolTip>
+            </Button.ToolTip>
         </Button>
         <ListBox x:Name="crawled_url_listbox" Margin="260,5,9,9" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" ItemContainerStyle="{StaticResource ListBoxItemStyle}">
             <ListBox.RenderTransform>
@@ -90,6 +100,14 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-
+        <Button x:Name="logs_button"  HorizontalAlignment="Left" Margin="49,144,0,0" VerticalAlignment="Top" Click="logs_button_Click" Style="{StaticResource ButtonStyle}" Height="32" Width="32">
+            <Image Source="pack://application:,,,/src_img/log.png" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Open the logs of the program.
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Label x:Name="url_count_label" Content="Label" HorizontalAlignment="Left" Margin="173,147,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

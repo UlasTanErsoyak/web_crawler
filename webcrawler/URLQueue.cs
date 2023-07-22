@@ -12,7 +12,6 @@ namespace webcrawler
         public void Add(URL url)
         {
             urlQueue.Enqueue(url);
-            logger.Info("Successfully added an url to the queue.");
         }
         public bool IsEmpty()
         {
@@ -22,7 +21,6 @@ namespace webcrawler
         {
             try
             {
-                logger.Info("Successfully popped an url from the queue.");
                 return urlQueue.TryDequeue(out URL url) ? url : null;
             }
             catch (Exception ex)

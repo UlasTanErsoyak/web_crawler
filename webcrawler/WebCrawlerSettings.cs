@@ -13,21 +13,18 @@ namespace WebCrawler.Settings
         private const int DefaultMaxDepth = 3;
         private const int DefaultMaxUrl = 100;
         private const int DefaultDelay = 1000;
-        private const int DefaultMaxRetry = 3;
         public int MaxDepth { get; set; }
         public int MaxUrl { get; set; }
         public int Delay { get; set; }
-        public int MaxRetry { get; set; }
         public WebCrawlerSettings()
         {
             SetDefaults();
         }
-        public WebCrawlerSettings(int maxDepth, int maxUrl, int delay, int maxRetry)
+        public WebCrawlerSettings(int maxDepth, int maxUrl, int delay)
         {
             MaxDepth = maxDepth > 0 ? maxDepth : DefaultMaxDepth;
             MaxUrl = maxUrl > 0 ? maxUrl : DefaultMaxUrl;
             Delay = delay > 0 ? delay : DefaultDelay;
-            MaxRetry = maxRetry > 0 ? maxRetry : DefaultMaxRetry;
             ValidateSettings();
         }
         public void SetDefaults()
@@ -35,7 +32,6 @@ namespace WebCrawler.Settings
             MaxDepth = DefaultMaxDepth;
             MaxUrl = DefaultMaxUrl;
             Delay = DefaultDelay;
-            MaxRetry = DefaultMaxRetry;
             ValidateSettings();
         }
         public void SaveSettings()
@@ -61,10 +57,9 @@ namespace WebCrawler.Settings
                     WebCrawlerSettings loadedSettings = JsonConvert.DeserializeObject<WebCrawlerSettings>(json);
                     if (loadedSettings != null)
                     {
-                        MaxDepth = loadedSettings.MaxDepth;
-                        MaxUrl = loadedSettings.MaxUrl;
-                        Delay = loadedSettings.Delay;
-                        MaxRetry = loadedSettings.MaxRetry;
+                        this.MaxDepth = loadedSettings.MaxDepth;
+                        this.MaxUrl = loadedSettings.MaxUrl;
+                        this.Delay = loadedSettings.Delay;
                     }
                     else
                     {
@@ -97,11 +92,6 @@ namespace WebCrawler.Settings
             {
                 Delay = DefaultDelay;
                 logger.Warning("Delay cannot be 0 or negative. Using default value.");
-            }
-            if (MaxRetry <= 0)
-            {
-                MaxRetry = DefaultMaxRetry;
-                logger.Warning("MaxRetry cannot be 0 or negative. Using default value.");
             }
         }
     }

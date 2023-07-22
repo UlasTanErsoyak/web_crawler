@@ -12,7 +12,6 @@ namespace webcrawler
         public void Add(URL url)
         {
             urlStack.Push(url);
-            logger.Info("Successfully added an url to the stack.");
         }
         public bool IsEmpty()
         {
@@ -22,7 +21,6 @@ namespace webcrawler
         {
             try
             {
-                logger.Info("Successfully popped an url from the stack.");
                 return urlStack.TryPop(out URL url) ? url : null;
             }
             catch (Exception ex)

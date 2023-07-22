@@ -7,7 +7,7 @@ namespace webcrawler
     internal class URL
     {
         private static int nextID = 0;
-        public URL(int parentID, uint depth, int spiderID, string urlAddress)
+        public URL(int parentID, int depth, int spiderID, string urlAddress)
         {
             this.URLID = nextID++;
             this.ParentID = parentID;
@@ -19,7 +19,7 @@ namespace webcrawler
         }
         public int URLID { get; set; }
         public int ParentID { get; set; }
-        public uint Depth { get; set; }
+        public int Depth { get; set; }
         public int SpiderID { get; set; }
         public int CreatedURLCount { get; set; }
         public string URLAddress { get; set; }
