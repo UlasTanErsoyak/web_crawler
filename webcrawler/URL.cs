@@ -1,12 +1,13 @@
 ﻿// Ignore Spelling: webcrawler
 //9 out of 10
 using System;
-using System.Collections.Generic;
+
 namespace webcrawler
 {
     internal class URL
     {
         private static int nextID = 0;
+
         public URL(int parentID, int depth, int spiderID, string urlAddress)
         {
             this.URLID = nextID++;
@@ -17,6 +18,7 @@ namespace webcrawler
             this.FoundingDate = DateTime.Now;
             IsFailed = false;
         }
+
         public int URLID { get; set; }
         public int ParentID { get; set; }
         public int Depth { get; set; }
@@ -26,11 +28,13 @@ namespace webcrawler
         public DateTime FoundingDate { get; set; }
         public DateTime CrawlingDate { get; set; }
         public bool IsFailed { get; set; }
+
         public bool IsValid()
         {
             return Uri.TryCreate(this.URLAddress, UriKind.Absolute, out Uri result) &&
                    (result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps);
         }
+
         public override string ToString()
         {
             return $"URLID: {URLID}, ParentID: {ParentID}, Depth: {Depth}, SpiderID: {SpiderID}, " +

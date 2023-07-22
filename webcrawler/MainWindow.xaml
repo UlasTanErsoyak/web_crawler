@@ -52,7 +52,7 @@
             </Label.Content>
             <Label.ToolTip>
                 <ToolTip>
-                    //todo
+                    Determine how many threads will crawl the given URL
                 </ToolTip>
             </Label.ToolTip>
         </Label>
@@ -61,14 +61,14 @@
                 <RadioButton x:Name="vertical_crawl_radio" Content="Vertical Crawling" Foreground="White">
                     <RadioButton.ToolTip>
                         <ToolTip>
-                            Spiders will crawl to the first url they found on each new url until end conditions meet.
+                            Spiders will crawl to the first URL they found on each new URL until end conditions meet.
                         </ToolTip>
                     </RadioButton.ToolTip>
                 </RadioButton>
                 <RadioButton x:Name="horizontal_crawl_radio" Content="Horizontal Crawling" Foreground="White">
                     <RadioButton.ToolTip>
                         <ToolTip>
-                            Spiders will crawl all new found urls before they crawl to the urls they acquired until end conditions meet.
+                            Spiders will crawl all new found URLs before they crawl to the URLs they acquired until end conditions meet.
                         </ToolTip>
                     </RadioButton.ToolTip>
                 </RadioButton>
@@ -87,7 +87,7 @@
             <Image Source="pack://application:,,,/src_img/crawl_image.png" Width="30" Height="30"/>
             <Button.ToolTip>
                 <ToolTip>
-                    Start crawling the given url with current settings.
+                    Start crawling the given URL with current settings.
                 </ToolTip>
             </Button.ToolTip>
         </Button>
@@ -108,6 +108,5 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
-        <Label x:Name="url_count_label" Content="Label" HorizontalAlignment="Left" Margin="173,147,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

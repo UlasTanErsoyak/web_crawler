@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace webcrawler
 {
@@ -18,9 +19,12 @@ namespace webcrawler
         private int currentDepth = 0;
         private readonly HttpClient httpClient = new HttpClient();
         Logger logger = new Logger();
+        private readonly string tableName;
         private IURLCollection urlCollection;
-        public Spider(int spiderId, bool type,List<string> workload)
+        Database database = new Database();
+        public Spider(int spiderId, bool type,List<string> workload,string tableName)
         {
+            this.tableName = tableName;
             this.SpiderId = spiderId;
             settings = new WebCrawlerSettings();
             if (type)
@@ -74,6 +78,7 @@ namespace webcrawler
                         {
                             mainWindow.crawled_url_listbox.Items.Add(url.ToString());
                         });
+                        database.SaveURL(this.tableName, url);
                         foreach (var x in foundUrls)
                         {
                             URL newURL = new URL(url.URLID, url.Depth + 1, -1, x);
@@ -85,12 +90,16 @@ namespace webcrawler
                     {
                         logger.Error(ex);
                         url.IsFailed = true;
+                        url.CrawlingDate = DateTime.Now;
+                        database.SaveURL(this.tableName, url);
                     }
                 }
                 else
                 {
                     url.IsFailed = true;
+                    url.CrawlingDate = DateTime.Now;
                     logger.Warning($"{url.URLAddress} was not valid.");
+                    database.SaveURL(this.tableName, url);
                 }
             }
         }

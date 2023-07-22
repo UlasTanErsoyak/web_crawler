@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows;
 namespace webcrawler
@@ -21,7 +20,6 @@ namespace webcrawler
             InitializeComponent();
             spidercount_label.Content = (spider_slider.Value + 1).ToString();
         }
-
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             spidercount_label.Content = (spider_slider.Value+1).ToString();
@@ -69,7 +67,6 @@ namespace webcrawler
                 spiderWorkloads.Add(spiderWorkload);
                 startIndex = endIndex;
             }
-
             return spiderWorkloads;
         }
         private async void crawl_button_Click(object sender, RoutedEventArgs e)
@@ -80,18 +77,24 @@ namespace webcrawler
             if (vertical_crawl_radio.IsChecked == true)
             {
                 List<List<string>> spiderWorkloads = DivideWorkload(InitializeCrawling(rooturl_textbox.Text),numberOfSpiders);
+                string url_name = rooturl_textbox.Text;
                 List<Task> crawlTasks = new List<Task>();
                 URL root_url = new URL(0, 0, 0, rooturl_textbox.Text);
                 root_url.CrawlingDate = DateTime.Now;
+                root_url.CreatedURLCount = spiderWorkloads[0].Count + spiderWorkloads[1].Count;
+                Database database = new Database();
+                var uri = new Uri(url_name);
+                string table_name=(uri.Host).ToString();
+                string sanitizedTableName = database.SanitizeTableName(table_name);
+                database.CreateTable(sanitizedTableName);
                 crawled_url_listbox.Items.Add(root_url.ToString());
                 for (int i = 1; i <= numberOfSpiders; i++)
                 {
-                    Spider spider = new Spider(i, false, spiderWorkloads[i-1]);
+                    Spider spider = new Spider(i, false, spiderWorkloads[i-1], sanitizedTableName);
                     Task crawlTask = spider.Crawl(this);
                     crawlTasks.Add(crawlTask);
                 }
                 await Task.WhenAll(crawlTasks);
-                //MessageBox.Show($"Completed vertical crawling of {root_url.URLAddress}");
             }
             else if (horizontal_crawl_radio.IsChecked == true)
             {

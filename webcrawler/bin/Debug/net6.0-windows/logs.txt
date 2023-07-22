@@ -7,7 +7,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:52 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:13 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -17,7 +17,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:52 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:13 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -27,7 +27,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:53 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:14 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:54 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:15 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -47,7 +47,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:54 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:16 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -57,7 +57,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:55 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:17 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -67,7 +67,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 1:23:55 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:19 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -77,7 +77,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:15 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:02:59 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -87,7 +87,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:29 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:05 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -97,7 +97,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:30 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:06 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -107,7 +107,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:31 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:06 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -117,7 +117,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:32 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:07 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -127,7 +127,7 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:32 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:10 PM
 ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
@@ -137,4 +137,94 @@ ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    a
    at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
    at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
    at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
-   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 62 - 7/22/2023 2:16:32 PM
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:03:12 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:13 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:14 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:15 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:15 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:16 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:16 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:17 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:26 PM
+ERROR: No such host is known. (invalid.crawler-test.com:443) - Stack Trace:    at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at webcrawler.Spider.Crawl(MainWindow mainWindow) in C:\Users\Ulas Tan\source\repos\webcrawler\webcrawler\Spider.cs:line 66 - 7/22/2023 4:04:27 PM

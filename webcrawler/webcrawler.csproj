@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.50" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
