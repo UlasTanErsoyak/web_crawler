@@ -4,8 +4,8 @@ namespace webcrawler
 {
     internal interface IURLCollection
     {
-        void Add(URL url);
-        URL Pop();
+        void Push(URL url);
+        URL TryPop();
         bool IsEmpty();
         int Count();
     }

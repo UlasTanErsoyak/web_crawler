@@ -1,92 +1,84 @@
-﻿using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿// Ignore Spelling: webcrawler
+using HtmlAgilityPack;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+using System;
 using webcrawler.Logs;
 using WebCrawler.Settings;
-//methodize everything
-//clean up the code
-//database integration
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Automation;
+using System.Xml.Linq;
+using System.Collections.Generic;
+
 namespace webcrawler
 {
     internal class Spider
     {
-        private static HashSet<string> crawledUrls = new HashSet<string>();
-        private readonly HttpClient httpClient= new HttpClient();
-        private Logger logger = new Logger();
-        private readonly int numberOfTasks;
-        private WebCrawlerSettings settings = new WebCrawlerSettings();
-        private int maxDepth = -1;
-        private object lockObject = new object();
-        public Spider(int numberOfTasks)
+        WebCrawlerSettings settings;
+        private int currentDepth = 0;
+        private readonly HttpClient httpClient = new HttpClient();
+        Logger logger = new Logger();
+        private IURLCollection urlCollection;
+        public Spider(int spiderId, bool type,List<string> workload)
         {
-            this.numberOfTasks = numberOfTasks;
+            this.SpiderId = spiderId;
+            settings = new WebCrawlerSettings();
+            if (type)
+            {
+                urlCollection = new URLStack();
+                AddWorkload(workload);
+            }
+            else
+            {
+                urlCollection = new URLQueue();
+                AddWorkload(workload);
+            }
             settings.LoadSettings();
         }
-        public async Task<bool> Crawl(MainWindow mainWindow, IURLCollection urlCollection)
+        public void AddWorkload(List<string> workload)
         {
-            var tasks = new List<Task>();
-            var spiderIds = Enumerable.Range(0, numberOfTasks).ToList();
-
-            for (int i = 0; i < numberOfTasks; i++)
+            foreach(string url in workload)
             {
-                int spiderId = spiderIds[i];
-                tasks.Add(ProcessUrls(mainWindow, urlCollection, spiderId));
+                URL Url = new URL(0, 1, this.SpiderId, url);
+                Url.FoundingDate = DateTime.Now;
+                urlCollection.Push(Url);
             }
-
-            await Task.WhenAll(tasks);
-            return true;
         }
-        private async Task ProcessUrls(MainWindow mainWindow, IURLCollection urlCollection, int spiderId)
+        int CrawledUrls { get; set; }
+        int SpiderId { get; set; }
+        public async Task Crawl(MainWindow mainWindow)
         {
-            while (!urlCollection.IsEmpty() && crawledUrls.Count < settings.MaxUrl && maxDepth <= settings.MaxDepth)
+            while (CrawledUrls < settings.MaxUrl && currentDepth <= settings.MaxDepth)
             {
-                URL url;
-                lock (lockObject)
+                URL url = urlCollection.TryPop();
+                if (url == null)
                 {
-                    if (urlCollection.IsEmpty())
-                        return;
-
-                    url = urlCollection.Pop();
+                    break;
                 }
-
-                if (!crawledUrls.Contains(url.URLAddress))
+                if (url.IsValid())
                 {
                     try
                     {
-                        url.SpiderID = spiderId;
-                        if (url.IsValid())
+                        var html = await httpClient.GetStringAsync(url.URLAddress);
+                        var doc = new HtmlDocument();
+                        doc.LoadHtml(html);
+                        var foundUrls = doc.DocumentNode.SelectNodes("//a[@href]")
+                            .Where(node => !node.Descendants("img").Any())
+                            .Select(node => node.GetAttributeValue("href", ""))
+                            .Where(href => Uri.TryCreate(href, UriKind.Absolute, out Uri uriResult)
+                            && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)).ToArray();
+                        url.CreatedURLCount = foundUrls.Length;
+                        url.CrawlingDate = DateTime.Now;
+                        url.SpiderID = this.SpiderId;
+                        mainWindow.Dispatcher.Invoke(() =>
                         {
-                            IEnumerable<string> foundUrls = await GetUrlsAsync(url);
-
-                            url.CreatedURLCount = foundUrls.Count();
-                            url.CrawlingDate = DateTime.Now;
-                            crawledUrls.Add(url.URLAddress);
-                            logger.Info(url.SpiderID.ToString());
-
-                            mainWindow.Dispatcher.Invoke(() =>
-                            {
-                                mainWindow.crawled_url_listbox.Items.Add(url.ToString());
-                                mainWindow.url_count_label.Content = crawledUrls.Count;
-                            });
-                            if (url.Depth + 1 > maxDepth)
-                            {
-                                maxDepth = url.Depth + 1;
-                            }
-
-                            foreach (var node in foundUrls)
-                            {
-                                URL newURL = new URL(url.URLID, url.Depth + 1, -1, node);
-                                urlCollection.Add(newURL);
-                            }
-                        }
-                        else
+                            mainWindow.crawled_url_listbox.Items.Add(url.ToString());
+                        });
+                        foreach (var x in foundUrls)
                         {
-                            logger.Warning($"{url.URLAddress} was not valid.");
+                            URL newURL = new URL(url.URLID, url.Depth + 1, -1, x);
+                            newURL.FoundingDate = DateTime.Now;
+                            urlCollection.Push(newURL);
                         }
                     }
                     catch (Exception ex)
@@ -95,28 +87,11 @@ namespace webcrawler
                         url.IsFailed = true;
                     }
                 }
-            }
-        }
-
-        private async Task<IEnumerable<string>> GetUrlsAsync(URL url)
-        {
-            try
-            {
-                var html = await httpClient.GetStringAsync(url.URLAddress);
-                var doc = new HtmlDocument();
-                doc.LoadHtml(html);
-                var anchorTags = doc.DocumentNode.SelectNodes("//a[@href]")
-                    .Where(node => !node.Descendants("img").Any())
-                    .Select(node => node.GetAttributeValue("href", ""))
-                    .Where(href => Uri.TryCreate(href, UriKind.Absolute, out Uri uriResult)
-                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)).ToArray();
-                return anchorTags;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                url.IsFailed = true;
-                return Enumerable.Empty<string>();
+                else
+                {
+                    url.IsFailed = true;
+                    logger.Warning($"{url.URLAddress} was not valid.");
+                }
             }
         }
     }

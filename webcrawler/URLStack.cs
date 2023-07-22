@@ -1,7 +1,6 @@
-﻿// Ignore Spelling: webcrawler
-//7 out of 10
-using System;
+﻿using System;
 using System.Collections.Concurrent;
+using System.Threading;
 using webcrawler.Logs;
 namespace webcrawler
 {
@@ -9,7 +8,8 @@ namespace webcrawler
     {
         private static ConcurrentStack<URL> urlStack = new ConcurrentStack<URL>();
         private Logger logger = new Logger();
-        public void Add(URL url)
+        private SemaphoreSlim semaphore = new SemaphoreSlim(10);
+        public void Push(URL url)
         {
             urlStack.Push(url);
         }
@@ -17,16 +17,22 @@ namespace webcrawler
         {
             return urlStack.Count == 0;
         }
-        public URL Pop()
+
+        public URL TryPop()
         {
             try
             {
+                semaphore.Wait();
                 return urlStack.TryPop(out URL url) ? url : null;
             }
             catch (Exception ex)
             {
                 logger.Error(ex);
                 return null;
+            }
+            finally
+            {
+                semaphore.Release();
             }
         }
         public int Count()

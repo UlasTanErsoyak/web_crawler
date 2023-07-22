@@ -9,7 +9,7 @@ namespace webcrawler
     {
         private static ConcurrentQueue<URL> urlQueue = new ConcurrentQueue<URL>();
         Logger logger = new Logger();
-        public void Add(URL url)
+        public void Push(URL url)
         {
             urlQueue.Enqueue(url);
         }
@@ -17,7 +17,7 @@ namespace webcrawler
         {
             return urlQueue.Count==0;
         }
-        public URL Pop()
+        public URL TryPop()
         {
             try
             {
