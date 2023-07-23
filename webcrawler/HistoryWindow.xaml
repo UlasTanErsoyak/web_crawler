@@ -41,7 +41,61 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <ListBox x:Name="table_listbox"  Margin="10,10,561,131" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" ItemContainerStyle="{StaticResource ListBoxItemStyle}" SelectionChanged="ListBox_SelectionChanged"/>
-
+        <ListBox x:Name="table_listbox"  Margin="10,10,561,131" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" ItemContainerStyle="{StaticResource ListBoxItemStyle}" SelectionChanged="table_listbox_SelectionChanged"/>
+        <ListBox x:Name="table_content_listbox"  Margin="244,10,20,131" Background="#2C2C2C" BorderBrush="#5C5C5C" Foreground="White" ItemContainerStyle="{StaticResource ListBoxItemStyle}" SelectionChanged="table_content_listbox_SelectionChanged"/>
+        <Label Content="Total URL Count-&gt;" HorizontalAlignment="Left" Margin="3,300,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="url_count_label" Content="" HorizontalAlignment="Left" Margin="115,300,0,0" VerticalAlignment="Top" Width="40" Foreground="White"/>
+        <Label Content="Parent ID-&gt;" HorizontalAlignment="Left" Margin="192,301,0,0" VerticalAlignment="Top" Width="122" Height="26" Foreground="White"/>
+        <Label Content="Created URL Count-&gt;" HorizontalAlignment="Left" Margin="579,330,0,0" VerticalAlignment="Top" Width="122" Height="25" Foreground="White"/>
+        <Label Content="Spider ID-&gt;" HorizontalAlignment="Left" Margin="192,353,0,0" VerticalAlignment="Top" Width="122" Height="24" Foreground="White"/>
+        <Label Content="Depth-&gt;" HorizontalAlignment="Left" Margin="192,327,0,0" VerticalAlignment="Top" Width="122" Height="26" Foreground="White" />
+        <Label Content="URL Address-&gt;" HorizontalAlignment="Left" Margin="2,385,0,0" VerticalAlignment="Top" Width="147" Height="24" Foreground="White"/>
+        <Label Content="Founding Date-&gt;" HorizontalAlignment="Left" Margin="357,302,0,0" VerticalAlignment="Top" Width="122" Height="26" Foreground="White"/>
+        <Label Content="Is Failed-&gt;" HorizontalAlignment="Left" Margin="578,302,0,0" VerticalAlignment="Top" Width="79" Height="26" Foreground="White"/>
+        <Label Content="Crawling Date-&gt;" HorizontalAlignment="Left" Margin="357,328,0,0" VerticalAlignment="Top" Width="122" Height="24" Foreground="White" />
+        <Label Content="Wait Time-&gt;" HorizontalAlignment="Left" Margin="357,352,0,0" VerticalAlignment="Top" Width="122" Height="26" Foreground="White"/>
+        <Label x:Name="parent_id_label" Content="" HorizontalAlignment="Left" Margin="314,301,0,0" VerticalAlignment="Top" Width="38" Foreground="White"/>
+        <Label x:Name="depth_label" Content="" HorizontalAlignment="Left" Margin="314,327,0,0" VerticalAlignment="Top" Width="38" Foreground="White"/>
+        <Label x:Name="spider_id_label" Content="" HorizontalAlignment="Left" Margin="314,355,0,0" VerticalAlignment="Top" Height="24" Width="38" Foreground="White"/>
+        <Label x:Name="created_url_count__label" Content="" HorizontalAlignment="Left" Margin="701,330,0,0" VerticalAlignment="Top" Height="25" Width="38" Foreground="White"/>
+        <Label x:Name="url_address_label" Content="" HorizontalAlignment="Left" Margin="149,385,0,0" VerticalAlignment="Top" Height="31" Width="641" Foreground="White"/>
+        <Label x:Name="founding_date_label" Content="" HorizontalAlignment="Left" Margin="465,300,0,0" VerticalAlignment="Top" Width="108" Height="27" Foreground="White"/>
+        <Label x:Name="crawling_date_label" Content="" HorizontalAlignment="Left" Margin="465,327,0,0" VerticalAlignment="Top" Width="108" Height="28" Foreground="White"/>
+        <Label x:Name="wait_time__label" Content="" HorizontalAlignment="Left" Margin="465,355,0,0" VerticalAlignment="Top" Height="26" Width="108" Foreground="White"/>
+        <Label x:Name="is_failed_label" Content="" HorizontalAlignment="Left" Margin="657,303,0,0" VerticalAlignment="Top" Height="25" Width="58" Foreground="White"/>
+        <Button x:Name="visualize_button"  HorizontalAlignment="Left" Margin="3,353,0,0" VerticalAlignment="Top" Click="visualize_button_Click" Height="34" Width="34" Style="{StaticResource ButtonStyle}">
+            <Image Source="pack://application:,,,/src_img/visualize.jpg" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Visualize the current table as a 2D Tree Structure. Each node is colored by the Spider that crawled it.
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="download_csv_button" HorizontalAlignment="Left" Margin="42,353,0,0" VerticalAlignment="Top" Height="34" Width="34" Click="download_csv_button_Click" Style="{StaticResource ButtonStyle}">
+            <Image Source="pack://application:,,,/src_img/download_csv.PNG" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Download the current table as a CSV file.
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="delete_button"  HorizontalAlignment="Left" Margin="81,353,0,0" VerticalAlignment="Top" Height="34" Width="34" Style="{StaticResource ButtonStyle}" Click="delete_button_Click">
+            <Image Source="pack://application:,,,/src_img/delete.jpg" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Delete the current table from database.
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="goto_url_button"  HorizontalAlignment="Left" Margin="122,353,0,0" VerticalAlignment="Top" Height="34" Width="33" Style="{StaticResource ButtonStyle}" Click="goto_url_button_Click">
+            <Image Source="pack://application:,,,/src_img/url.jpg" Width="30" Height="30"/>
+            <Button.ToolTip>
+                <ToolTip>
+                    Go to selected node's URL address.
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Label Content="Current Table-&gt;" HorizontalAlignment="Left" Margin="3,322,0,0" VerticalAlignment="Top" Width="92" Foreground="White"/>
+        <Label x:Name="current_table_label" Content="" HorizontalAlignment="Left" Margin="95,322,0,0" VerticalAlignment="Top" Width="96" Foreground="White"/>
     </Grid>
 </Window>

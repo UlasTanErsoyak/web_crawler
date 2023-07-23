@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <None Remove="src_img\crawl_image.png" />
+    <None Remove="src_img\delete.jpg" />
+    <None Remove="src_img\download_csv.PNG" />
     <None Remove="src_img\history.jpg" />
     <None Remove="src_img\home_settings.PNG" />
     <None Remove="src_img\log.png" />
     <None Remove="src_img\save_icon.PNG" />
     <None Remove="src_img\settings.png" />
+    <None Remove="src_img\url.jpg" />
+    <None Remove="src_img\visualize.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,8 @@
 
   <ItemGroup>
     <Resource Include="src_img\crawl_image.png" />
+    <Resource Include="src_img\delete.jpg" />
+    <Resource Include="src_img\download_csv.PNG" />
     <Resource Include="src_img\history.jpg" />
     <Resource Include="src_img\home_settings.PNG" />
     <Resource Include="src_img\log.png" />
@@ -33,6 +39,8 @@
     <Resource Include="src_img\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="src_img\url.jpg" />
+    <Resource Include="src_img\visualize.jpg" />
   </ItemGroup>
 
 </Project>

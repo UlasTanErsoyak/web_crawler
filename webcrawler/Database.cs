@@ -173,5 +173,28 @@ namespace webcrawler
             }
             return rows;
         }
+        public void DeleteTable(string tableName)
+        {
+            try
+            {
+                lock (lockObject)
+                {
+                    using (SqlConnection connection = new SqlConnection(ConnectionString))
+                    {
+                        connection.Open();
+                        string createTableQuery = $@"DROP TABLE {tableName};";
+                        using (SqlCommand cmd = new SqlCommand(createTableQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+            }
+
+        }
     }
 }
