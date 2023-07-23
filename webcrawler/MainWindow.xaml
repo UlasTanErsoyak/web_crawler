@@ -108,5 +108,8 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
+        <Button x:Name="history_button" HorizontalAlignment="Left" Margin="88,144,0,0" VerticalAlignment="Top" Height="32" Width="32" Click="history_button_Click" Style="{StaticResource ButtonStyle}">
+            <Image Source="pack://application:,,,/src_img/history.jpg" Width="30" Height="30"/>
+        </Button>
     </Grid>
 </Window>

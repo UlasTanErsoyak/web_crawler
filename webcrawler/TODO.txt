@@ -1,0 +1,4 @@
+history
+delete
+stop
+restart

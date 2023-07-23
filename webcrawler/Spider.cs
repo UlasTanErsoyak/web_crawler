@@ -6,10 +6,7 @@ using webcrawler.Logs;
 using WebCrawler.Settings;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Automation;
-using System.Xml.Linq;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace webcrawler
 {
@@ -52,7 +49,7 @@ namespace webcrawler
         int SpiderId { get; set; }
         public async Task Crawl(MainWindow mainWindow)
         {
-            while (CrawledUrls < settings.MaxUrl && currentDepth <= settings.MaxDepth)
+            while (this.CrawledUrls < settings.MaxUrl && currentDepth <= settings.MaxDepth)
             {
                 URL url = urlCollection.TryPop();
                 if (url == null)
@@ -74,6 +71,7 @@ namespace webcrawler
                         url.CreatedURLCount = foundUrls.Length;
                         url.CrawlingDate = DateTime.Now;
                         url.SpiderID = this.SpiderId;
+                        this.CrawledUrls++;
                         mainWindow.Dispatcher.Invoke(() =>
                         {
                             mainWindow.crawled_url_listbox.Items.Add(url.ToString());

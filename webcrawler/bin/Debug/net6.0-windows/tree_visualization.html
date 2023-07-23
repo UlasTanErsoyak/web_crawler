@@ -1,0 +1,364 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1000px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "white", "font": {"color": "white"}, "id": "0", "label": "URLID: 0\nSpider ID: 0", "shape": "dot", "title": "URLID: 0\nSpider ID: 0", "x": 0.5283661063866394, "y": -4.568234240589386}, {"color": "red", "font": {"color": "white"}, "id": "1", "label": "URLID: 1\nSpider ID: 1", "shape": "dot", "title": "URLID: 1\nSpider ID: 1", "x": 81.00229620429177, "y": -47.86053847476108}, {"color": "blue", "font": {"color": "white"}, "id": "2", "label": "URLID: 2\nSpider ID: 2", "shape": "dot", "title": "URLID: 2\nSpider ID: 2", "x": -8.51916835625291, "y": -8.909983562406044}, {"color": "green", "font": {"color": "white"}, "id": "3", "label": "URLID: 3\nSpider ID: 3", "shape": "dot", "title": "URLID: 3\nSpider ID: 3", "x": -82.99205765973316, "y": -60.33811997768036}, {"color": "purple", "font": {"color": "white"}, "id": "5", "label": "URLID: 5\nSpider ID: 5", "shape": "dot", "title": "URLID: 5\nSpider ID: 5", "x": 31.48582723742834, "y": -87.22721137187315}, {"color": "yellow", "font": {"color": "white"}, "id": "6", "label": "URLID: 6\nSpider ID: 6", "shape": "dot", "title": "URLID: 6\nSpider ID: 6", "x": 42.42853293409526, "y": -71.13860052025842}, {"color": "green", "font": {"color": "white"}, "id": "7", "label": "URLID: 7\nSpider ID: 3", "shape": "dot", "title": "URLID: 7\nSpider ID: 3", "x": 20.896281779871856, "y": 17.5043207320823}, {"color": "blue", "font": {"color": "white"}, "id": "8", "label": "URLID: 8\nSpider ID: 2", "shape": "dot", "title": "URLID: 8\nSpider ID: 2", "x": -80.37441703232682, "y": 55.76715065990487}, {"color": "yellow", "font": {"color": "white"}, "id": "9", "label": "URLID: 9\nSpider ID: 6", "shape": "dot", "title": "URLID: 9\nSpider ID: 6", "x": -3.86450787349702, "y": 20.424927894165137}, {"color": "green", "font": {"color": "white"}, "id": "10", "label": "URLID: 10\nSpider ID: 3", "shape": "dot", "title": "URLID: 10\nSpider ID: 3", "x": 46.04893223410127, "y": 76.53597940159499}, {"color": "yellow", "font": {"color": "white"}, "id": "11", "label": "URLID: 11\nSpider ID: 6", "shape": "dot", "title": "URLID: 11\nSpider ID: 6", "x": 40.53278608566874, "y": 88.5399711616291}, {"color": "purple", "font": {"color": "white"}, "id": "12", "label": "URLID: 12\nSpider ID: 5", "shape": "dot", "title": "URLID: 12\nSpider ID: 5", "x": -88.19933440399645, "y": 21.389889677902808}, {"color": "blue", "font": {"color": "white"}, "id": "13", "label": "URLID: 13\nSpider ID: 2", "shape": "dot", "title": "URLID: 13\nSpider ID: 2", "x": -5.185269458485575, "y": -93.36161309096168}, {"color": "green", "font": {"color": "white"}, "id": "14", "label": "URLID: 14\nSpider ID: 3", "shape": "dot", "title": "URLID: 14\nSpider ID: 3", "x": -92.59495509828864, "y": -9.236956758737417}, {"color": "red", "font": {"color": "white"}, "id": "15", "label": "URLID: 15\nSpider ID: 1", "shape": "dot", "title": "URLID: 15\nSpider ID: 1", "x": 28.097932582819702, "y": 96.15876607500694}, {"color": "orange", "font": {"color": "white"}, "id": "16", "label": "URLID: 16\nSpider ID: 4", "shape": "dot", "title": "URLID: 16\nSpider ID: 4", "x": 65.99988365276104, "y": 69.11637120345458}, {"color": "yellow", "font": {"color": "white"}, "id": "17", "label": "URLID: 17\nSpider ID: 6", "shape": "dot", "title": "URLID: 17\nSpider ID: 6", "x": -59.31882461320169, "y": -85.62970026121828}, {"color": "purple", "font": {"color": "white"}, "id": "18", "label": "URLID: 18\nSpider ID: 5", "shape": "dot", "title": "URLID: 18\nSpider ID: 5", "x": 83.23176671885129, "y": -62.97069617322782}, {"color": "red", "font": {"color": "white"}, "id": "20", "label": "URLID: 20\nSpider ID: 1", "shape": "dot", "title": "URLID: 20\nSpider ID: 1", "x": -32.836901810913105, "y": 93.16074908603869}, {"color": "purple", "font": {"color": "white"}, "id": "21", "label": "URLID: 21\nSpider ID: 5", "shape": "dot", "title": "URLID: 21\nSpider ID: 5", "x": 80.1460567224393, "y": 44.62437783231813}, {"color": "purple", "font": {"color": "white"}, "id": "22", "label": "URLID: 22\nSpider ID: 5", "shape": "dot", "title": "URLID: 22\nSpider ID: 5", "x": -95.6155337273281, "y": 4.295912726902847}, {"color": "white", "font": {"color": "white"}, "id": "23", "label": "URLID: 23\nSpider ID: -1", "shape": "dot", "title": "URLID: 23\nSpider ID: -1", "x": -72.3439050613566, "y": -75.07113526541845}, {"color": "white", "font": {"color": "white"}, "id": "24", "label": "URLID: 24\nSpider ID: -1", "shape": "dot", "title": "URLID: 24\nSpider ID: -1", "x": -34.59456234887659, "y": -85.160969140277}, {"color": "red", "font": {"color": "white"}, "id": "25", "label": "URLID: 25\nSpider ID: 1", "shape": "dot", "title": "URLID: 25\nSpider ID: 1", "x": -17.95928600026616, "y": -80.71727912738818}, {"color": "purple", "font": {"color": "white"}, "id": "26", "label": "URLID: 26\nSpider ID: 5", "shape": "dot", "title": "URLID: 26\nSpider ID: 5", "x": 15.284184134701942, "y": 93.94966530908601}, {"color": "white", "font": {"color": "white"}, "id": "27", "label": "URLID: 27\nSpider ID: -1", "shape": "dot", "title": "URLID: 27\nSpider ID: -1", "x": 94.91148602148162, "y": -41.96007293674949}, {"color": "yellow", "font": {"color": "white"}, "id": "28", "label": "URLID: 28\nSpider ID: 6", "shape": "dot", "title": "URLID: 28\nSpider ID: 6", "x": 65.18866814659961, "y": -82.22509327276923}, {"color": "blue", "font": {"color": "white"}, "id": "29", "label": "URLID: 29\nSpider ID: 2", "shape": "dot", "title": "URLID: 29\nSpider ID: 2", "x": 20.628940019203302, "y": -97.21653552297083}, {"color": "orange", "font": {"color": "white"}, "id": "30", "label": "URLID: 30\nSpider ID: 4", "shape": "dot", "title": "URLID: 30\nSpider ID: 4", "x": -90.74228256262553, "y": 41.72040670067001}, {"color": "orange", "font": {"color": "white"}, "id": "31", "label": "URLID: 31\nSpider ID: 4", "shape": "dot", "title": "URLID: 31\nSpider ID: 4", "x": -96.7015310878733, "y": 22.372588968303475}, {"color": "blue", "font": {"color": "white"}, "id": "32", "label": "URLID: 32\nSpider ID: 2", "shape": "dot", "title": "URLID: 32\nSpider ID: 2", "x": -20.170202036816477, "y": 89.83424888159529}, {"color": "purple", "font": {"color": "white"}, "id": "33", "label": "URLID: 33\nSpider ID: 5", "shape": "dot", "title": "URLID: 33\nSpider ID: 5", "x": 92.98289849488182, "y": 29.96425383406735}, {"color": "red", "font": {"color": "white"}, "id": "34", "label": "URLID: 34\nSpider ID: 1", "shape": "dot", "title": "URLID: 34\nSpider ID: 1", "x": -69.63847557900249, "y": -56.67632842163376}, {"color": "red", "font": {"color": "white"}, "id": "35", "label": "URLID: 35\nSpider ID: 1", "shape": "dot", "title": "URLID: 35\nSpider ID: 1", "x": -47.4973758538765, "y": -86.30468338782886}, {"color": "yellow", "font": {"color": "white"}, "id": "36", "label": "URLID: 36\nSpider ID: 6", "shape": "dot", "title": "URLID: 36\nSpider ID: 6", "x": -25.771192858832165, "y": -100.0}, {"color": "blue", "font": {"color": "white"}, "id": "37", "label": "URLID: 37\nSpider ID: 2", "shape": "dot", "title": "URLID: 37\nSpider ID: 2", "x": 77.46071661542246, "y": 61.39303108995323}, {"color": "orange", "font": {"color": "white"}, "id": "38", "label": "URLID: 38\nSpider ID: 4", "shape": "dot", "title": "URLID: 38\nSpider ID: 4", "x": -96.2550343368773, "y": -34.52642507311579}, {"color": "blue", "font": {"color": "white"}, "id": "39", "label": "URLID: 39\nSpider ID: 2", "shape": "dot", "title": "URLID: 39\nSpider ID: 2", "x": 48.12101079800327, "y": -82.33865858887523}, {"color": "purple", "font": {"color": "white"}, "id": "41", "label": "URLID: 41\nSpider ID: 5", "shape": "dot", "title": "URLID: 41\nSpider ID: 5", "x": 60.27039948305425, "y": 82.39225176912794}, {"color": "blue", "font": {"color": "white"}, "id": "42", "label": "URLID: 42\nSpider ID: 2", "shape": "dot", "title": "URLID: 42\nSpider ID: 2", "x": 2.3227256644042473, "y": 96.74146563018499}, {"color": "blue", "font": {"color": "white"}, "id": "43", "label": "URLID: 43\nSpider ID: 2", "shape": "dot", "title": "URLID: 43\nSpider ID: 2", "x": 94.70977987022394, "y": -27.771229255353237}, {"color": "orange", "font": {"color": "white"}, "id": "44", "label": "URLID: 44\nSpider ID: 4", "shape": "dot", "title": "URLID: 44\nSpider ID: 4", "x": -11.843435208857452, "y": 98.57739981843706}, {"color": "blue", "font": {"color": "white"}, "id": "45", "label": "URLID: 45\nSpider ID: 2", "shape": "dot", "title": "URLID: 45\nSpider ID: 2", "x": -61.40248523872093, "y": 67.70742379868925}, {"color": "purple", "font": {"color": "white"}, "id": "46", "label": "URLID: 46\nSpider ID: 5", "shape": "dot", "title": "URLID: 46\nSpider ID: 5", "x": 67.341731031048, "y": -65.75421931192639}, {"color": "yellow", "font": {"color": "white"}, "id": "47", "label": "URLID: 47\nSpider ID: 6", "shape": "dot", "title": "URLID: 47\nSpider ID: 6", "x": 98.81544969395915, "y": 3.234062086210089}, {"color": "orange", "font": {"color": "white"}, "id": "48", "label": "URLID: 48\nSpider ID: 4", "shape": "dot", "title": "URLID: 48\nSpider ID: 4", "x": -87.17365017557789, "y": -44.532736982100296}, {"color": "orange", "font": {"color": "white"}, "id": "49", "label": "URLID: 49\nSpider ID: 4", "shape": "dot", "title": "URLID: 49\nSpider ID: 4", "x": 93.6467404689062, "y": -14.406622728401604}, {"color": "orange", "font": {"color": "white"}, "id": "50", "label": "URLID: 50\nSpider ID: 4", "shape": "dot", "title": "URLID: 50\nSpider ID: 4", "x": 93.1687885186348, "y": 16.646697465238976}, {"color": "yellow", "font": {"color": "white"}, "id": "51", "label": "URLID: 51\nSpider ID: 6", "shape": "dot", "title": "URLID: 51\nSpider ID: 6", "x": 85.66508853770335, "y": -3.874232222354617}, {"color": "yellow", "font": {"color": "white"}, "id": "52", "label": "URLID: 52\nSpider ID: 6", "shape": "dot", "title": "URLID: 52\nSpider ID: 6", "x": -77.99791498483107, "y": 68.61503140790435}, {"color": "yellow", "font": {"color": "white"}, "id": "53", "label": "URLID: 53\nSpider ID: 6", "shape": "dot", "title": "URLID: 53\nSpider ID: 6", "x": -97.40031463160575, "y": -19.4418923703346}, {"color": "red", "font": {"color": "white"}, "id": "54", "label": "URLID: 54\nSpider ID: 1", "shape": "dot", "title": "URLID: 54\nSpider ID: 1", "x": -71.65145803348287, "y": 41.331287719083925}, {"color": "red", "font": {"color": "white"}, "id": "55", "label": "URLID: 55\nSpider ID: 1", "shape": "dot", "title": "URLID: 55\nSpider ID: 1", "x": 90.0639586244158, "y": 47.086874216463876}, {"color": "purple", "font": {"color": "white"}, "id": "56", "label": "URLID: 56\nSpider ID: 5", "shape": "dot", "title": "URLID: 56\nSpider ID: 5", "x": 9.140896266250218, "y": -88.55790570364121}, {"color": "red", "font": {"color": "white"}, "id": "57", "label": "URLID: 57\nSpider ID: 1", "shape": "dot", "title": "URLID: 57\nSpider ID: 1", "x": -46.238596380615895, "y": 89.14572322075833}, {"color": "red", "font": {"color": "white"}, "id": "58", "label": "URLID: 58\nSpider ID: 1", "shape": "dot", "title": "URLID: 58\nSpider ID: 1", "x": -55.23945223349077, "y": 79.54684537607763}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "0", "to": "1"}, {"arrows": "to", "from": "0", "to": "2"}, {"arrows": "to", "from": "0", "to": "3"}, {"arrows": "to", "from": "0", "to": "5"}, {"arrows": "to", "from": "0", "to": "6"}, {"arrows": "to", "from": "0", "to": "7"}, {"arrows": "to", "from": "0", "to": "8"}, {"arrows": "to", "from": "0", "to": "9"}, {"arrows": "to", "from": "0", "to": "10"}, {"arrows": "to", "from": "0", "to": "11"}, {"arrows": "to", "from": "0", "to": "12"}, {"arrows": "to", "from": "0", "to": "13"}, {"arrows": "to", "from": "0", "to": "14"}, {"arrows": "to", "from": "0", "to": "15"}, {"arrows": "to", "from": "0", "to": "16"}, {"arrows": "to", "from": "0", "to": "17"}, {"arrows": "to", "from": "0", "to": "18"}, {"arrows": "to", "from": "2", "to": "20"}, {"arrows": "to", "from": "2", "to": "21"}, {"arrows": "to", "from": "2", "to": "22"}, {"arrows": "to", "from": "2", "to": "23"}, {"arrows": "to", "from": "2", "to": "24"}, {"arrows": "to", "from": "2", "to": "25"}, {"arrows": "to", "from": "2", "to": "26"}, {"arrows": "to", "from": "2", "to": "27"}, {"arrows": "to", "from": "2", "to": "28"}, {"arrows": "to", "from": "2", "to": "29"}, {"arrows": "to", "from": "2", "to": "30"}, {"arrows": "to", "from": "2", "to": "31"}, {"arrows": "to", "from": "2", "to": "32"}, {"arrows": "to", "from": "2", "to": "33"}, {"arrows": "to", "from": "2", "to": "34"}, {"arrows": "to", "from": "2", "to": "35"}, {"arrows": "to", "from": "2", "to": "36"}, {"arrows": "to", "from": "2", "to": "37"}, {"arrows": "to", "from": "2", "to": "38"}, {"arrows": "to", "from": "6", "to": "39"}, {"arrows": "to", "from": "7", "to": "41"}, {"arrows": "to", "from": "7", "to": "42"}, {"arrows": "to", "from": "7", "to": "43"}, {"arrows": "to", "from": "7", "to": "44"}, {"arrows": "to", "from": "7", "to": "45"}, {"arrows": "to", "from": "7", "to": "46"}, {"arrows": "to", "from": "7", "to": "47"}, {"arrows": "to", "from": "7", "to": "48"}, {"arrows": "to", "from": "7", "to": "49"}, {"arrows": "to", "from": "9", "to": "50"}, {"arrows": "to", "from": "9", "to": "51"}, {"arrows": "to", "from": "9", "to": "52"}, {"arrows": "to", "from": "9", "to": "53"}, {"arrows": "to", "from": "9", "to": "54"}, {"arrows": "to", "from": "9", "to": "55"}, {"arrows": "to", "from": "9", "to": "56"}, {"arrows": "to", "from": "9", "to": "57"}, {"arrows": "to", "from": "9", "to": "58"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
