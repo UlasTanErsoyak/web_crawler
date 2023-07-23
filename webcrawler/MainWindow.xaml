@@ -111,5 +111,26 @@
         <Button x:Name="history_button" HorizontalAlignment="Left" Margin="88,144,0,0" VerticalAlignment="Top" Height="32" Width="32" Click="history_button_Click" Style="{StaticResource ButtonStyle}">
             <Image Source="pack://application:,,,/src_img/history.jpg" Width="30" Height="30"/>
         </Button>
+        <Label x:Name="spider1_label" Content="" HorizontalAlignment="Left" Margin="70,244,0,0" VerticalAlignment="Top" Width="55" Foreground="Red"/>
+        <Label x:Name="spider2_label" Content="" HorizontalAlignment="Left" Margin="70,270,0,0" VerticalAlignment="Top" Width="55" Foreground="Blue"/>
+        <Label x:Name="spider4_label" Content="" HorizontalAlignment="Left" Margin="70,322,0,0" VerticalAlignment="Top" Width="55" Foreground="Orange"/>
+        <Label x:Name="spider5_label" Content="" HorizontalAlignment="Left" Margin="70,348,0,0" VerticalAlignment="Top" Width="55" Foreground="Purple"/>
+        <Label x:Name="spider3_label" Content="" HorizontalAlignment="Left" Margin="70,296,0,0" VerticalAlignment="Top" Width="55" Foreground="Green"/>
+        <Label x:Name="spider6_label" Content="" HorizontalAlignment="Left" Margin="191,244,0,0" VerticalAlignment="Top" Width="59" Foreground="Yellow"/>
+        <Label x:Name="spider7_label" Content="" HorizontalAlignment="Left" Margin="191,270,0,0" VerticalAlignment="Top" Width="59" Foreground="Cyan"/>
+        <Label x:Name="spider9_label" Content="" HorizontalAlignment="Left" Margin="191,322,0,0" VerticalAlignment="Top" Width="59" Foreground="Lime"/>
+        <Label x:Name="spider10_label" Content="" HorizontalAlignment="Left" Margin="191,348,0,0" VerticalAlignment="Top" Width="59" Foreground="Pink"/>
+        <Label x:Name="spider8_label" Content="" HorizontalAlignment="Left" Margin="191,296,0,0" VerticalAlignment="Top" Width="59" Foreground="Magenta"/>
+        <Label Content="Spider1-&gt;" HorizontalAlignment="Left" Margin="5,242,0,0" VerticalAlignment="Top" Foreground="Red"/>
+        <Label Content="Spider3-&gt;" HorizontalAlignment="Left" Margin="5,296,0,0" VerticalAlignment="Top" Foreground="Green"/>
+        <Label Content="Spider2-&gt;" HorizontalAlignment="Left" Margin="5,270,0,0" VerticalAlignment="Top" Foreground="Blue"/>
+        <Label Content="Spider4-&gt;" HorizontalAlignment="Left" Margin="5,322,0,0" VerticalAlignment="Top" Foreground="Orange"/>
+        <Label Content="Spider5-&gt;" HorizontalAlignment="Left" Margin="5,348,0,0" VerticalAlignment="Top" Foreground="Purple"/>
+        <Label Content="Spider6-&gt;" HorizontalAlignment="Left" Margin="126,242,0,0" VerticalAlignment="Top" Foreground="Yellow"/>
+        <Label Content="Spider8-&gt;" HorizontalAlignment="Left" Margin="126,296,0,0" VerticalAlignment="Top" Foreground="Magenta"/>
+        <Label Content="Spider7-&gt;" HorizontalAlignment="Left" Margin="126,270,0,0" VerticalAlignment="Top" Foreground="Cyan"/>
+        <Label Content="Spider9-&gt;" HorizontalAlignment="Left" Margin="126,322,0,0" VerticalAlignment="Top" Foreground="Lime"/>
+        <Label Content="Spider10-&gt;" HorizontalAlignment="Left" Margin="126,348,0,0" VerticalAlignment="Top" Foreground="Pink"/>
+        <Label Content="URL/S for all 10 Spiders. Each spider&#xD;&#xA;represented with its unique colour that&#xD;&#xA;corresponds the visual version." HorizontalAlignment="Left" Margin="5,181,0,0" VerticalAlignment="Top" Width="220" Height="69" Foreground="White"/>
     </Grid>
 </Window>

@@ -7,6 +7,7 @@ using WebCrawler.Settings;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace webcrawler
 {
@@ -19,11 +20,15 @@ namespace webcrawler
         private readonly string tableName;
         private IURLCollection urlCollection;
         Database database = new Database();
-        public Spider(int spiderId, bool type,List<string> workload,string tableName)
+        private int crawledUrlsCount = 0;
+        private DateTime startTime;
+        Label crawling_rate_label;
+        public Spider(int spiderId, bool type,List<string> workload,string tableName,Label crawl_label)
         {
             this.tableName = tableName;
             this.SpiderId = spiderId;
             settings = new WebCrawlerSettings();
+            crawling_rate_label = crawl_label;
             if (type)
             {
                 urlCollection = new URLStack();
@@ -83,6 +88,13 @@ namespace webcrawler
                             newURL.FoundingDate = DateTime.Now;
                             urlCollection.Push(newURL);
                         }
+                        crawledUrlsCount++;
+                        double crawlingRate = GetCrawlingRate();
+                        crawling_rate_label.Dispatcher.Invoke(() =>
+                        {
+                            crawling_rate_label.Content = $"{crawlingRate}";
+                        });
+                        await Task.Delay(settings.Delay);
                     }
                     catch (Exception ex)
                     {
@@ -100,6 +112,13 @@ namespace webcrawler
                     database.SaveURL(this.tableName, url);
                 }
             }
+        }
+        public double GetCrawlingRate()
+        {
+            TimeSpan elapsed = DateTime.Now - startTime;
+            double elapsedSeconds = elapsed.TotalSeconds;
+            double crawlingRate = crawledUrlsCount / elapsedSeconds;
+            return crawlingRate;
         }
     }
 }

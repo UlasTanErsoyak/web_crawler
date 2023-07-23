@@ -7,19 +7,28 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using webcrawler.Logs;
 namespace webcrawler
 {
     public partial class MainWindow : Window
     {
-        public readonly string settings_img_path = "src_img/settings.png";
-        public readonly string crawl_img_path = "src_img/crawl_image.png";
-        public readonly string log_img_path = "src_img/log.png";
         private readonly string log_path = AppDomain.CurrentDomain.BaseDirectory + "logs.txt";
+        private Dictionary<int, Label> spiderLabels = new Dictionary<int, Label>();
         Logger logger = new Logger();
         public MainWindow()
         {
             InitializeComponent();
+            spiderLabels.Add(1, spider1_label);
+            spiderLabels.Add(2, spider2_label);
+            spiderLabels.Add(3, spider3_label);
+            spiderLabels.Add(4, spider4_label);
+            spiderLabels.Add(5, spider5_label);
+            spiderLabels.Add(6, spider6_label);
+            spiderLabels.Add(7, spider7_label);
+            spiderLabels.Add(8, spider8_label);
+            spiderLabels.Add(9, spider9_label);
+            spiderLabels.Add(10, spider10_label);
             spidercount_label.Content = (spider_slider.Value + 1).ToString();
         }
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -54,15 +63,12 @@ namespace webcrawler
             {
                 logger.Error(ex);
                 List<string> empty = new List<string>();
-                
+                MessageBox.Show(ex.ToString());
                 return empty;
             }
 
         }
-        private static bool HasImageChildNode(HtmlNode node)
-        {
-            return node.Descendants("img").Any();
-        }
+
         private List<List<string>> DivideWorkload(List<string> urls, int numberOfSpiders)
         {
             if(urls.Count == 0)
@@ -90,11 +96,11 @@ namespace webcrawler
         {
             if (vertical_crawl_radio.IsChecked == true)
             {
-                await StartCrawling(false);
+                await StartCrawling(true);
             }
             else if (horizontal_crawl_radio.IsChecked == true)
             {
-                await StartCrawling(true);
+                await StartCrawling(false);
             }
             else
             {
@@ -136,7 +142,7 @@ namespace webcrawler
 
                     for (int i = 1; i <= numberOfSpiders; i++)
                     {
-                        Spider spider = new Spider(i, isHorizontal, spiderWorkloads[i - 1], sanitizedTableName);
+                        Spider spider = new Spider(i, isHorizontal, spiderWorkloads[i - 1], sanitizedTableName, spiderLabels[i]);
                         Task crawlTask = spider.Crawl(this);
                         crawlTasks.Add(crawlTask);
                     }

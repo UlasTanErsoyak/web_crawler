@@ -36,7 +36,7 @@
         <Label Content="Max Depth->" HorizontalAlignment="Left" Margin="2,3,0,0" VerticalAlignment="Top" Foreground="White" Width="80" Grid.ColumnSpan="2">
             <Label.ToolTip>
                 <ToolTip>
-                    Set how deep crawling process will go.It takes root url as 0th depth. For example: {https://example_url1 
+                    Set how far will crawlers get from the root URL. For example: {https://example_url1 
                     -> https://example_url2 -> https://example_url3} has a depth of 2.
                 </ToolTip>
             </Label.ToolTip>
@@ -51,7 +51,7 @@
         <Label Content="Delay (ms)->" HorizontalAlignment="Left" Margin="2,55,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2" Width="80">
             <Label.ToolTip>
                 <ToolTip>
-                    Set how many microseconds program will wait in between each http request.
+                    Set how many microseconds program will wait in between each HTTP request.
                 </ToolTip>
             </Label.ToolTip>
         </Label>

@@ -1,5 +1,5 @@
 {
-  "MaxDepth": 10,
-  "MaxUrl": 10,
+  "MaxDepth": 5,
+  "MaxUrl": 100,
   "Delay": 1000
 }

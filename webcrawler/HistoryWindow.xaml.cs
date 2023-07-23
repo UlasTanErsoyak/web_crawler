@@ -213,6 +213,7 @@ namespace webcrawler
             wait_time__label.Content = null;
             founding_date_label.Content= null;
             current_table_label.Content = null;
+            url_count_label.Content = null;
             rows = null;
             table_content_listbox.Items.Clear();
         }
