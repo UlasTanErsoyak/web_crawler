@@ -28,7 +28,7 @@ This is a powerful multi-threaded WPF web crawler built to efficiently scrape an
 - **Table Management**: Tables can be deleted as needed to manage crawled data efficiently.
 - **Web Browser Integration**: Users can inspect each crawled URL and navigate to it using a button click.
 - **Custom Thread Count**: Users can choose the number of threads to use during crawling.
-
+- **CSV File**: Users can download the crawled URLs as a CSV file.
 ## Installation
 
 1. Clone this repository to your local machine.
