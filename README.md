@@ -80,7 +80,7 @@ The SQL database will be automatically generated and contain the following colum
 - ParentID: The ID of the parent URL (if any) from which the current URL was discovered.
 - Depth: The depth level of the current URL from the root URL.
 - SpiderID: The ID of the spider/thread responsible for crawling this URL.
-- CreatedURLCount: The total count of URLs discovered by the spider/thread.
+- CreatedURLCount: The total count of URLs discovered from that URL.
 - URLAddress: The URL of the current crawled page.
 - FoundingDate: The date when the URL was discovered.
 - CrawlingDate: The date when the URL was crawled.
