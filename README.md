@@ -37,7 +37,7 @@ git clone https://github.com/yourusername/web-crawler.git
 cd web-crawler
 ```
 
-2. Change the python executable path in the  HistoryWindow.xaml..cs file
+2. Change the python executable path in the  HistoryWindow.xaml.cs file
 ```C#
 private async Task StartPythonScriptAsync(string tableName)
         {
