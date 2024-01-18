@@ -28,7 +28,7 @@ the crawled urls can be visualized using the built-in pyvis script, generating a
 
 the web crawler offers several customization options:
 
-- crawling depth: set the depth of the crawling process to control how far the crawler follows links from the initial urls.
+- crawling depth: set the depth of the crawling process to control how far the crawler follows links from the initial urls. 
 - url limit: define the maximum number of urls the crawler should scrape during the crawling process.
 - delays: adjust the delay between each http request to prevent overwhelming the target server.
 - thread count: choose the number of threads to use for the crawling process.
